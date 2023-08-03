@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Trying out HTMX Title</title>
+    </head>
+    <body>
+        <h4>HTMX!</h4>
+
+        <hr>
+
+        <h5>Get request</h5>
+        <div hx-get="http://localhost:3000/test" hx-trigger="load"></div>
+        <div hx-get="http://localhost:3000/test" hx-trigger="load delay:1s"></div>
+        <div hx-get="http://localhost:3000/poll" hx-trigger="every 2s"></div>
+        
+        <hr>
+
+        <h5>Post request</h5>
+        <p id="postResponse"></p>
+        <input name="payload" type="text" placeholder="type here"/>
+        <div hx-post="http://localhost:3000/test" hx-include="[name=payload]" hx-trigger="click[ctrlKey]">
+           Send with Ctrl Key + Click here
+        </div>
+        <button hx-post="http://localhost:3000/test" hx-include="[name=payload]" hx-target="#postResponse">
+            Fire HTMX POST!
+        </button>        
+
+        <hr>
+
+        <h5>Web Socket (not working)</h5>
+
+        <div hx-ext="ws" ws-connect="ws://localhost:3000">
+            <div id="notifications" hx-swap-oob="beforeend">
+                New message received
+            </div>
+            <div id="chat_room" hx-swap-oob="morphdom">
+                ...
+            </div>
+            <form id="form" ws-send>
+                <input name="chat_message">
+            </form>
+        </div>
+
+        <hr>
+
+        <h5>Server Sent Event</h5>
+        
+        <div hx-ext="sse" sse-connect="http://localhost:3000/sse" sse-swap="message">
+        </div>
+
+    </body>
+    <script src="htmx.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/sse.js"></script>
+</html>
