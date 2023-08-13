@@ -14,10 +14,8 @@ const port: string = process.env.PORT || '3000';
 
 const app = express();
 
-const wss = new WebSocket.Server({
-  server: app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  })
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 app.use(cors());
@@ -25,7 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// setup helmet
+app.set('view engine', 'pug');
+
+/// setup helmet
 // app.use(helmet());
 // app.use(helmet.hidePoweredBy());
 // app.use(helmet.frameguard({ action: 'deny' }));
@@ -45,53 +45,25 @@ app.use(bodyParser.json());
 //   }
 // }));
 
-
 /// Routes for testing
+app.get('/', (req, res) => {
+  return res.render('index', { title: 'Home', getTestUrl: 'http://localhost:3000/test' });
+});
+
+app.get('/test', (req, res) => {
+  return res.send({ body: new Date() });
+});
+
 app.use(express.static('public'));
 
-app.get("/", (req, res) => {
-  res.sendFile('index.html', { root: __dirname + '/public' }, err => {
-    if (err) {
-      console.log(err);
-      res.status(500).end();
-    }
-  });
-});
-
-app.get("/test", (req, res) => {
-  res.send("Hello from the server!");
-});
-
-app.get("/poll", (req, res) => {
-  res.send(`Polling get ${new Date()}`);
-});
-
-app.post("/test", (req, res) => {
-  const reqPayload = req.body.payload;
-  res.send(reqPayload + "- Server String here!");
-});
-
-
-/// Web Socket test
-wss.on('connection', (ws) => {
-  console.log("Established web socket connection")
-
-  ws.on('message', message => {
-    console.log(`Message ${message}`)
-
-    wss.clients.forEach(client => {
-      if (client.readyState === WebSocket.OPEN) {
-        console.log(`Sent to client ${message} - Server Message ${new Date()}`)
-        client.send(message.toString());
-      }
-    })
-  })
-
-  ws.on('close', () => {
-    console.log("Web socket closed")
-  })
-})
-
+// app.get("/", (req, res) => {
+//   res.sendFile('index.html', { root: __dirname + '/public' }, err => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).end();
+//     }
+//   });
+// });
 
 /// Server sent event
 // Route for the server-sent event source
@@ -157,4 +129,3 @@ app.use((req, res, next) => {
   });
   next();
 });
-
