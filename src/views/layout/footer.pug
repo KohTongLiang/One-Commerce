@@ -1,0 +1,4 @@
+footer(class="bg-cyan-600")
+  div(class="bg-iflex text-white flex-row text-center")
+    p #{ body } 
+    span(hx-get=`${ getTestUrl }` hx-trigger="load")

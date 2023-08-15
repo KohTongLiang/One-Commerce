@@ -2,11 +2,10 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import DailyRotateFile from 'winston-daily-rotate-file';
 import winston from 'winston';
-import WebSocket = require('ws');
+import path = require('path');
 
 dotenv.config(); // Load environment variables
 
@@ -25,45 +24,27 @@ app.use(bodyParser.json());
 
 app.set('view engine', 'pug');
 
-/// setup helmet
-// app.use(helmet());
-// app.use(helmet.hidePoweredBy());
-// app.use(helmet.frameguard({ action: 'deny' }));
-// app.use(helmet.xssFilter());
-// app.use(helmet.noSniff());
-// app.use(
-//   helmet.hsts({
-//     maxAge: 31536000,
-//     includeSubDomains: true,
-//     preload: true,
-//   }),
-// );
-// app.use(helmet.contentSecurityPolicy({
-//   directives: {
-//     defaultSrc: ["'self'"],
-//     styleSrc: ["'self'", "https://fonts.googleapis.com", "'unsafe-inline'"]
-//   }
-// }));
-
 /// Routes for testing
 app.get('/', (req, res) => {
-  return res.render('index', { title: 'Home', getTestUrl: 'http://localhost:3000/test' });
+  return res.render('index', { 
+    title: 'Home', 
+    getTestUrl: 'http://localhost:3000/test', 
+    body: 'This the paragraph text.'
+  });
 });
 
 app.get('/test', (req, res) => {
   return res.send({ body: new Date() });
 });
 
-app.use(express.static('public'));
+app.post("/submit", (req, res) => {
+  console.log(`Note submission: ${req.body.title} & ${req.body.description}`)
+  return res.send("Okay")
+})
 
-// app.get("/", (req, res) => {
-//   res.sendFile('index.html', { root: __dirname + '/public' }, err => {
-//     if (err) {
-//       console.log(err);
-//       res.status(500).end();
-//     }
-//   });
-// });
+app.use(express.static('public'));
+app.set('views', path.join(__dirname, '..', 'src', 'views'))
+
 
 /// Server sent event
 // Route for the server-sent event source

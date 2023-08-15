@@ -1,8 +1,0 @@
-doctype html
-html(lang='en')
-  head 
-    title #{ title }
-    script(src='htmx.min.js')
-  body 
-    p test
-    p(hx-get=`${ getTestUrl }` hx-trigger="load")
