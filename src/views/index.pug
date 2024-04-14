@@ -5,22 +5,7 @@ html(lang='en')
     link(rel='stylesheet', href='build/styles.css')
     script(src='htmx.min.js')
     script(src='unpkg.com_htmx.org@1.9.4_dist_ext_sse.js')
-  body(class="flex flex-col h-[100vh]")
+  body
     include layout/header.pug
-    div(class="flex-grow px-10 py-10")
-      div(class="form-div")
-        div(class="flex-1")
-          span Title &nbsp;
-          input(type="text", name="title", placeholder="Lorem Ipsum")
-      div(class="form-div")
-        div(class="flex-1")
-          textarea(type="text", name="description", placeholder="Note goes here....", cols="50", rows="15")
-      div(class="form-div")
-        div(class="flex-1")
-      div(class="form-div")
-        div(class="flex-1")
-          dive(class="text-green-500")
-            div(id="result")
-          button(class="bg-indigo-600 text-white py-1 px-2 rounded-md transition-colors hover:bg-blue-100 shadow-md", hx-post=`${formSubmitUrl}`, hx-include="[name='title'],[name='description']", hx-target="#result", hx-swap="innerHTML") Submit 
-          div(hx-ext="sse", sse-connect=`${sseUrl}`, sse-swap="message") 
-    include layout/footer.pug
+    include components/formupload.pug
+    //- include layout/footer.pug

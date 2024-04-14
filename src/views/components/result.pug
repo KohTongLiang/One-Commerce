@@ -1,0 +1,6 @@
+div(class="static")
+  img(class="absolute" src=`${ image }` alt='uploaded image')
+  each subject in geminiResult 
+    div(class=`absolute` style=`top: ${subject.y}px; left: ${subject.x}px;`)
+      p= subject.title 
+      p= subject.description
