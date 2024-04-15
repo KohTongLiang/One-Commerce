@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import path = require('path');
 import { EventEmitter } from 'events';
 import multer from 'multer';
+import sharp from 'sharp';
 import { prompt, promptExamples } from './constants';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs';
@@ -87,10 +88,10 @@ app.get('/sse', (req, res) => {
   });
 });
 
-function fileToGenerativePart(path: string, mimeType: string) {
+function fileToGenerativePart(imgBuffer: Buffer, mimeType: string) {
   return {
     inlineData: {
-      data: Buffer.from(fs.readFileSync(path)).toString('base64'),
+      data: Buffer.from(imgBuffer).toString('base64'),
       mimeType,
     },
   };
@@ -102,23 +103,37 @@ app.post('/api/v1/image', upload.single('image'), async (req, res, next) => {
     return;
   }
 
+  let imgBuffer = fs.readFileSync(req.file.path);
+  let imgWidth, imgHeight;
+
+  try {
+    const metadata = await sharp(imgBuffer).metadata();
+    const { width, height } = metadata;
+    imgWidth = width;
+    imgHeight = height;
+    console.log(`Image dimensions: ${width}x${height}`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error processing image.');
+    return;
+  }
+
   // Prompt construction
   let finalPrompt = [];
   promptExamples.forEach((example) => {
     finalPrompt.push(
       'Example: ',
-      fileToGenerativePart(`promptexamples/${example.image}`, example.mime),
+      fileToGenerativePart(fs.readFileSync(`promptexamples/${example.image}`), example.mime),
       'Output: ',
       example.output,
     );
   });
-  finalPrompt.push('Input Image: ', fileToGenerativePart(req.file.path, req.file.mimetype));
-  finalPrompt.push('Prompt: ' + prompt);
+  finalPrompt.push('Input Image: ', fileToGenerativePart(imgBuffer, req.file.mimetype));
+  finalPrompt.push('Prompt: ' + prompt + ' - ' + imgWidth + 'x' + imgHeight);
 
   const result = await model.generateContent(finalPrompt);
   const response = result.response;
   const text = response.text();
-  const imageEncoding = `data:${req.file.mimetype};base64,${Buffer.from(fs.readFileSync(req.file.path)).toString('base64')}`;
 
   fs.unlink(req.file.path, (err) => {
     if (err) {
@@ -126,9 +141,13 @@ app.post('/api/v1/image', upload.single('image'), async (req, res, next) => {
     }
   });
 
-  console.log(text);
+  const geminiResult = JSON.parse(text);
+
   return res.render('components/result', {
-    image: imageEncoding,
-    geminiResult: JSON.parse(text),
+    title: geminiResult.item_title,
+    description: geminiResult.description,
+    specifications: geminiResult.specifications,
+    use_cases: geminiResult.use_cases,
+    seo: geminiResult.SEO_keywords,
   });
 });

@@ -1,6 +1,9 @@
-div(class="static")
-  img(class="absolute" src=`${ image }` alt='uploaded image')
-  each subject in geminiResult 
-    div(class=`absolute` style=`top: ${subject.y}px; left: ${subject.x}px;`)
-      p= subject.title 
-      p= subject.description
+div 
+  p= title
+  p= description
+  each specObj, specType in specifications 
+    p= specObj + ': ' + specType
+  each useCase in use_cases
+    p= useCase
+  each seoKeyword in seo 
+    p= seoKeyword

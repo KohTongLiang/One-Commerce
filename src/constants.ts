@@ -1,125 +1,142 @@
-
 export const promptExamples = [
     {
-        "image": "cat.jpg",
-        "mime": "image/jpeg",
-        "output": `[
-            {
-                "title": "Cute Kitten",
-                "description": "There's a super cute kitten in the image! It has stripes and spots, kind of like a little tiger.  It's lying down on a soft blanket, and it has big, bright eyes. It looks like it's waiting for someone to play with!",
-                "x": 499,
-                "y": 499
-            }
-        ]`
+        image: 'ps4.jpg',
+        mime: 'image/jpeg',
+        output: `{
+            "item_title": "Sony PlayStation 4 Slim 500GB Console with Accessories",
+            "description": "Immerse yourself in the world of incredible gaming experiences with the Sony PlayStation 4 Slim 500GB console. This bundle includes everything you need to get started, featuring a sleek console, a DualShock 4 wireless controller, power cable, HDMI cable, and a USB charging cable. Enjoy stunning graphics, lightning-fast processing, and a vast library of games for endless entertainment.",
+            "specifications": {
+              "Storage Capacity": "500GB",
+              "Model": "PlayStation 4 Slim",
+              "Connectivity": "Wi-Fi, Bluetooth, Ethernet",
+              "Included Accessories": "DualShock 4 Wireless Controller, Power Cable, HDMI Cable, USB Charging Cable",
+              "Features": "HDR gaming, Remote Play, Share Play, access to streaming services"
+            },
+            "use_cases": [
+              "Playing immersive single-player and multiplayer games",
+              "Streaming movies, TV shows, and music from popular platforms",
+              "Connecting with friends online for social gaming experiences",
+              "Enjoying virtual reality experiences with the PlayStation VR headset (sold separately)"
+            ],
+            "SEO_keywords": [
+              "PlayStation 4",
+              "PS4 Slim",
+              "500GB Console",
+              "Gaming Console",
+              "DualShock 4 Controller",
+              "HDR Gaming",
+              "Entertainment System"
+            ]
+          }`,
     },
     {
-        "image": "iss.jpg",
-        "mime": "image/jpeg",
-        "output": `[
-            {
-                "title": "International Space Station",
-                "description": "Wow! That's the International Space Station! It's a large spacecraft that orbits Earth and serves as a home where astronauts can live.",
-                "x": 495,
-                "y": 387
+        image: 'turtle.jpg',
+        mime: 'image/jpeg',
+        output: `{
+            "item_title": "Red-Eared Slider Turtle - Perfect Aquatic Companion",
+            "description": "Bring joy and tranquility to your home with a charming Red-Eared Slider Turtle. These captivating creatures are known for their vibrant colors, playful personalities, and ease of care, making them ideal pets for both beginners and experienced reptile enthusiasts. Create a stimulating aquatic environment and watch them thrive as they swim, bask, and explore their surroundings.",
+            "specifications": {
+              "Scientific Name": "Trachemys scripta elegans",
+              "Adult Size": "Up to 12 inches in shell length",
+              "Lifespan": "20-30 years with proper care",
+              "Diet": "Omnivorous, including commercial turtle pellets, insects, leafy greens, and vegetables",
+              "Habitat Requirements": "Spacious aquarium with a basking area, clean water, and proper filtration",
+              "Temperature": "Water temperature between 75-80°F, basking area temperature between 85-90°F",
+              "Lighting": "Full-spectrum UVB light for shell health and overall well-being"
             },
-            {
-                "title": "Earth",
-                "description": "Look at that beautiful blue planet! That's Earth, our home. From space, we can see the swirling clouds and vast oceans that cover its surface. ",
-                "x": 498,
-                "y": 621
-            },
-            {
-                "title": "Sun",
-                "description": "The bright light is the sun! It's a star and the center of our solar system. The sun gives us light and heat, making life possible on Earth.",
-                "x": 493,
-                "y": 103
-            }
-        ]`
+            "use_cases": [
+              "Educational Pet: Observe and learn about turtle behavior, anatomy, and aquatic ecosystems.",
+              "Stress Relief: Watching turtles swim gracefully can have a calming and therapeutic effect.",
+              "Home Decor: Create a beautiful and unique aquatic display in your living space.",
+              "Conversation Starter: Their vibrant colors and playful nature attract attention and spark discussions."
+            ],
+            "SEO_keywords": [
+              "Red-Eared Slider Turtle",
+              "aquatic turtle",
+              "pet turtle",
+              "turtle care",
+              "reptile pet",
+              "aquarium",
+              "basking",
+              "turtle food",
+              "UVB light",
+              "water filtration"
+            ]
+          }`,
     },
     {
-        "image": "pisa.jpg",
-        "mime": "image/jpeg",
-        "output": `[
-            {
-                "title": "Leaning Tower of Pisa",
-                "description": "Wow! Look at that leaning tower! It's the Leaning Tower of Pisa in Italy. It's famous because it leans to one side. It's like a giant building is playing a balancing game!",
-                "x": 450,
-                "y": 350
+        image: 'axolotl.jpg',
+        mime: 'image/jpeg',
+        output: `{
+            "item_title": "Adorable Axolotl Merchandise - Tote Bag & Keychain",
+            "description": "Embrace the cuteness of axolotls with this delightful merchandise set! Featuring a charming tote bag adorned with an axolotl design and a matching keychain, this combo is perfect for axolotl enthusiasts and anyone who appreciates unique and eye-catching accessories.",
+            "specifications": {
+              "Tote Bag": {
+                "Material": "Durable canvas or fabric",
+                "Size": "Varies (e.g., 15x18 inches)",
+                "Design": "Axolotl print or illustration"
+              },
+              "Keychain": {
+                "Material": "Acrylic or rubber",
+                "Size": "Compact and lightweight",
+                "Design": "Axolotl charm with a keyring attachment"
+              }
             },
-            {
-                "title": "Tourists",
-                "description": "See all those people around the tower? They are tourists from all over the world who came to see the Leaning Tower of Pisa. Maybe they are taking pictures or trying to hold it up!",
-                "x": 250,
-                "y": 800
-            },
-            {
-                "title": "Blue Sky",
-                "description": "Look at the beautiful sky! The sun is setting, and the clouds are all sorts of colors like orange, pink, and purple. It's like a giant painting in the sky!",
-                "x": 500,
-                "y": 100
-            }
-        ]`
+            "use_cases": [
+              "Everyday Carryall: The tote bag is perfect for carrying books, groceries, or everyday essentials.",
+              "Travel Companion: Pack your belongings in style and show your love for axolotls on your adventures.",
+              "Gift Idea: Surprise your friends, family, or fellow axolotl enthusiasts with a unique and thoughtful gift.",
+              "Collectible Item: Expand your axolotl collection with these adorable and functional pieces.",
+              "Fashion Statement: Add a touch of personality and whimsy to your outfit with the eye-catching axolotl designs."
+            ],
+            "SEO_keywords": [
+              "axolotl",
+              "axolotl merchandise",
+              "tote bag",
+              "keychain",
+              "cute accessories",
+              "animal lover gifts",
+              "unique gifts",
+              "kawaii",
+              "amphibian",
+              "neotenic"
+            ]
+          }`,
     },
     {
-        "image": "tools.jpg",
-        "mime": "image/jpeg",
-        "output": `[
-            {
-                "title": "Yellow Hammer",
-                "description": "Wow! A bright yellow hammer with a metal head. This is used to drive nails into wood or other surfaces.",
-                "x": 450,
-                "y": 350
+        image: 'rilakumar.jpg',
+        mime: 'image/jpeg',
+        output: `{
+            "item_title": "Rilakkuma Plush Toy - Adorable and Huggable Companion",
+            "description": "Bring home the irresistible charm of Rilakkuma with this delightful plush toy. Known for its relaxed demeanor and cute appearance, Rilakkuma is the perfect companion for cuddling, playtime, or adding a touch of kawaii to your space.",
+            "specifications": {
+              "Character": "Rilakkuma",
+              "Material": "Soft plush fabric",
+              "Size": "Varies (e.g., 10 inches tall)",
+              "Features": "Embroidered details, signature relaxed posture"
             },
-            {
-                "title": "Metal Saw",
-                "description": "Look, a shiny metal saw with a yellow handle. This is used for cutting through wood and other materials. Be careful, it's sharp!",
-                "x": 200,
-                "y": 400
-            },
-            {
-                "title": "Red Clamp",
-                "description": "Cool! A red clamp used to hold things tightly together. This is useful when gluing or nailing pieces of wood.",
-                "x": 600,
-                "y": 450
-            },
-            {
-                "title": "Measuring Tape",
-                "description": "Check it out! A measuring tape used to measure length. It has numbers and markings to help you get accurate measurements.",
-                "x": 750,
-                "y": 400
-            },
-            {
-                "title": "Pliers",
-                "description": "Shiny and silver pliers! These are used to grip, bend, or cut things like wires and nails.",
-                "x": 150,
-                "y": 300
-            },
-            {
-                "title": "Pointy Nails",
-                "description": "A bunch of pointy nails! These are used with the hammer to hold pieces of wood together. Be careful, they're sharp too!",
-                "x": 300,
-                "y": 400
-            },
-            {
-                "title": "Screwdriver",
-                "description": "A screwdriver! This is used to turn screws into wood or other materials.",
-                "x": 250,
-                "y": 100
-            },
-            {
-                "title": "Box Cutter",
-                "description": "A box cutter! This has a sharp blade and is used to cut through cardboard, paper, and other materials.",
-                "x": 400,
-                "y": 100
-            },
-            {
-                "title": "Level",
-                "description": "A level! This tool helps you make sure things are straight and not tilted.",
-                "x": 800,
-                "y": 100
-            }
-        ]`
-    }
-]
+            "use_cases": [
+              "Cuddly Companion: Rilakkuma's soft and huggable nature makes it the ideal snuggle buddy.",
+              "Playtime Friend: Spark imaginative adventures and create lasting memories with Rilakkuma as your playtime companion.",
+              "Room Decor: Add a touch of kawaii and Japanese charm to your bedroom, living room, or office space.",
+              "Collectible Item: Expand your Rilakkuma collection or start a new one with this adorable plush toy.",
+              "Gift Idea: Surprise your loved ones with a heartwarming and huggable gift that brings joy and comfort."
+            ],
+            "SEO_keywords": [
+              "Rilakkuma",
+              "plush toy",
+              "kawaii",
+              "Japanese character",
+              "bear plush",
+              "soft toy",
+              "huggable",
+              "collectible",
+              "gift idea",
+              "room decor"
+            ]
+          }`,
+    },
+];
 
-export const prompt = "I am a kid that wants to learn more about the world. Grab my attention and describe to me the objects of interest in the scene. Return the description under a description key in json. Return to me the position of the object in X and Y format (0,0 being at the top left) and the position should be in the middle of the object. Return the output as a JSON array for each object of interest. An object of interest is any objects that are plainly visible in the image and of significance. I have provided some examples and their output followed by the images I want you to describe."
+export const prompt =
+    'You are a store assistant. Help me come up with item title, description, specification, as well as potential use cases of how the item will be used by people for the main item in the image which i want to sell. If its not obvious, make use of the text input to reference to the item. Depending on the item, return to me useful information that user needs to know under the specification. I want the SEO keywords to help my sell my item well as well. Return to me in JSON format. ';
