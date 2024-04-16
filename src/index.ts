@@ -2,13 +2,14 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import path = require('path');
-import { EventEmitter } from 'events';
+import {EventEmitter} from 'events';
 import multer from 'multer';
 import sharp from 'sharp';
-import { prompt, promptExamples } from './constants';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import {prompt, promptExamples} from './constants';
+import {GoogleGenerativeAI} from '@google/generative-ai';
 import fs from 'fs';
+import shopifyRoute from "./routes/shopify-route";
+import path = require('path');
 
 dotenv.config(); // Load environment variables
 
@@ -47,10 +48,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/test', (req, res) => {
-  return res.send(`<span>${new Date()}</span>`);
-});
-
 app.post('/submit', (req, res) => {
   console.log(`Note submission: ${req.body.title} & ${req.body.description}`);
   notesCache.push({ title: req.body.title, description: req.body.description });
@@ -59,6 +56,8 @@ app.post('/submit', (req, res) => {
 });
 
 app.use(express.static('public'));
+app.use('/api/v1/shopify', shopifyRoute)
+
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
 /// Server sent event
