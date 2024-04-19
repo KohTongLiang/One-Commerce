@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sir know alot</title>
+    <link rel="stylesheet" href="build/styles.css" />
+    <script src="htmx.min.js"></script>
+    <script src="htmx-sse.js"></script>
+</head>
+
+<body class="flex flex-col h-[100vh]">
+    <div hx-trigger="load" hx-get="/views/header" hx-target="this" hx-swap="innerHTML"></div>
+    <div hx-trigger="load" hx-get="/views/formUpload" hx-target="this" hx-swap="innerHTML"></div>
+    <div hx-trigger="load" hx-get="/views/footer" hx-target="this" hx-swap="innerHTML"></div>
+</body>
+
+</html>

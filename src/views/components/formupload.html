@@ -1,0 +1,30 @@
+<div class="flex-grow px-10 py-10">
+    <form id="form" hx-encoding="multipart/form-data" hx-post="/api/v1/gemini/image" hx-target="#results" hx-swap="innerHTML">
+        <div class="form-div">
+            <div class="flex-1">
+                <input id="imageInput" type="file" name="image" />
+            </div>
+        </div>
+        <div class="form-div">
+            <div class="flex-1">
+                <button
+                    class="bg-indigo-600 text-white py-1 px-2 rounded-md transition-colors hover:bg-blue-100 shadow-md"
+                    type="submit">
+                    Upload
+                </button>
+            </div>
+        </div>
+        <div class="form-div">
+            <div class="flex-1">
+                <progress id="progress" value="0" max="100"></progress>
+            </div>
+        </div>
+        <div class="form-div self-center">
+            <div class="flex-1">
+                <img id="preview" alt="Uploaded Preview" />
+            </div>
+        </div>
+    </form>
+</div>
+<div id="results"></div>
+<script src="fileupload.js"></script>
