@@ -4,6 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import viewRoutes from './routes/view-routes';
 import geminiRoute from "./routes/gemini-route";
+import shopifyRoute from "./routes/shopify-route";
 import path = require('path');
 
 dotenv.config(); // Load environment variables
@@ -25,6 +26,7 @@ app.use(express.static('public'))
 // Routes setup
 app.use('/views', viewRoutes)
 app.use('/api/v1/gemini', geminiRoute)
+app.use('/api/v1/shopify', shopifyRoute)
 
 // View setup
 app.set('view engine', 'pug');
