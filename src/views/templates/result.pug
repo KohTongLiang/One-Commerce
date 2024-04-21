@@ -1,0 +1,14 @@
+div(class="container flex flex-col")
+  div(class="flex-1")
+    p(class="text-2xl")= title
+    p(class="text-xl")= description
+  hr
+  div(class='flex-1')
+    each specObj, specType in specifications 
+      p: em= specObj 
+        div= specType
+  div(class='flex-1')
+    each useCase in use_cases
+      p= useCase
+    each seoKeyword in seo 
+      p= seoKeyword
