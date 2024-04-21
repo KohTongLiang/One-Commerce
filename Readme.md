@@ -41,5 +41,5 @@ npm run build-css
 
 npm run build
 
-npm run dev
+npm run start
 ```
