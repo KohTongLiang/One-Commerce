@@ -31,7 +31,6 @@ app.use('/api/v1/shopify', shopifyRoute)
 // View setup
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
-// const viewPath = path.join(__dirname, '..', 'src', 'views');
 
 app.get('/', (req, res) => {
   return res.sendFile( "/index.html");

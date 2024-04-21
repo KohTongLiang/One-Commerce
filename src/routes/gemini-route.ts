@@ -3,7 +3,7 @@ import sharp from "sharp";
 import fs from 'fs';
 import multer from 'multer';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import {prompt, promptExamples} from "../constants";
+import { prompt, promptExamples } from "../constants";
 import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables

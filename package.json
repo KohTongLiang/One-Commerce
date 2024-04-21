@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src --exec ts-node src/index.ts",
+    "dev": "nodemon --watch src --exec 'postcss public/styles.css -o public/build/styles.css && ts-node src/index.ts'",
     "build": "tsc",
     "serve": "node dist/index.js",
     "lint": "eslint --ext .ts src/",

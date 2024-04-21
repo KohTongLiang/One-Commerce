@@ -1,8 +1,8 @@
 export const promptExamples = [
-    {
-        image: 'ps4.jpg',
-        mime: 'image/jpeg',
-        output: `{
+  {
+    image: 'ps4.jpg',
+    mime: 'image/jpeg',
+    output: `{
             "item_title": "Sony PlayStation 4 Slim 500GB Console with Accessories",
             "description": "Immerse yourself in the world of incredible gaming experiences with the Sony PlayStation 4 Slim 500GB console. This bundle includes everything you need to get started, featuring a sleek console, a DualShock 4 wireless controller, power cable, HDMI cable, and a USB charging cable. Enjoy stunning graphics, lightning-fast processing, and a vast library of games for endless entertainment.",
             "specifications": {
@@ -28,11 +28,11 @@ export const promptExamples = [
               "Entertainment System"
             ]
           }`,
-    },
-    {
-        image: 'turtle.jpg',
-        mime: 'image/jpeg',
-        output: `{
+  },
+  {
+    image: 'turtle.jpg',
+    mime: 'image/jpeg',
+    output: `{
             "item_title": "Red-Eared Slider Turtle - Perfect Aquatic Companion",
             "description": "Bring joy and tranquility to your home with a charming Red-Eared Slider Turtle. These captivating creatures are known for their vibrant colors, playful personalities, and ease of care, making them ideal pets for both beginners and experienced reptile enthusiasts. Create a stimulating aquatic environment and watch them thrive as they swim, bask, and explore their surroundings.",
             "specifications": {
@@ -63,11 +63,11 @@ export const promptExamples = [
               "water filtration"
             ]
           }`,
-    },
-    {
-        image: 'axolotl.jpg',
-        mime: 'image/jpeg',
-        output: `{
+  },
+  {
+    image: 'axolotl.jpg',
+    mime: 'image/jpeg',
+    output: `{
             "item_title": "Adorable Axolotl Merchandise - Tote Bag & Keychain",
             "description": "Embrace the cuteness of axolotls with this delightful merchandise set! Featuring a charming tote bag adorned with an axolotl design and a matching keychain, this combo is perfect for axolotl enthusiasts and anyone who appreciates unique and eye-catching accessories.",
             "specifications": {
@@ -102,11 +102,11 @@ export const promptExamples = [
               "neotenic"
             ]
           }`,
-    },
-    {
-        image: 'rilakumar.jpg',
-        mime: 'image/jpeg',
-        output: `{
+  },
+  {
+    image: 'rilakumar.jpg',
+    mime: 'image/jpeg',
+    output: `{
             "item_title": "Rilakkuma Plush Toy - Adorable and Huggable Companion",
             "description": "Bring home the irresistible charm of Rilakkuma with this delightful plush toy. Known for its relaxed demeanor and cute appearance, Rilakkuma is the perfect companion for cuddling, playtime, or adding a touch of kawaii to your space.",
             "specifications": {
@@ -135,8 +135,8 @@ export const promptExamples = [
               "room decor"
             ]
           }`,
-    },
+  },
 ];
 
 export const prompt =
-    'You are a store assistant. Help me come up with item title, description, specification, as well as potential use cases of how the item will be used by people for the main item in the image which i want to sell. If its not obvious, make use of the text input to reference to the item. Depending on the item, return to me useful information that user needs to know under the specification. I want the SEO keywords to help my sell my item well as well. Return to me in JSON format. ';
+  'You are a store assistant. Help me come up with item title, description, specification, as well as potential use cases of how the item will be used by people for the main item in the image which i want to sell. If its not obvious, make use of the text input to reference to the item. Depending on the item, return to me useful information that user needs to know under the specification. I want the SEO keywords to help my sell my item well as well. Return to me in a valid JSON format. For use_cases its an array of string btw.';

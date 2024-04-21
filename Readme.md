@@ -13,8 +13,14 @@ Setup environmental file with the following
 ```text
 PORT=<your port of choice>
 GOOGLE_AI_API_KEY=<API key from Google>
-GOOGLE_AI_MODEL=<gemini-pro or gemini-pro-vision> 
+GOOGLE_AI_MODEL=<gemini-pro or gemini-pro-vision>
+SHOPIFY_CLIENT_ID=
+SHOPIFY_CLIENT_SECRET=
+HOSTNAME=h
+SHOPIFY_STORE_DOMAIN=
 ```
+
+Additionally ensure that ngrok is installed and running.
 
 ### Dev environment
 
