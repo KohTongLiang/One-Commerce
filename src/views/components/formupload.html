@@ -1,5 +1,6 @@
 <div class="flex-grow px-10 py-10">
-    <form id="form" hx-encoding="multipart/form-data" hx-post="/api/v1/gemini/image" hx-target="#results" hx-swap="innerHTML">
+    <form id="form" hx-encoding="multipart/form-data" hx-post="/api/v1/gemini/image" hx-target="#results"
+        hx-swap="innerHTML">
         <div class="form-div">
             <div class="flex-1">
                 <input id="imageInput" type="file" name="image" />
@@ -19,12 +20,14 @@
                 <progress id="progress" value="0" max="100"></progress>
             </div>
         </div>
-        <div class="form-div self-center">
+        <div class="form-div ">
             <div class="flex-1">
-                <img id="preview" alt="Uploaded Preview" />
+                <img id="preview" alt="Uploaded Preview" class="inline-block w-[50%]" />
             </div>
         </div>
     </form>
+    <div id="results"></div>
+    <!-- <div id="results" hx-trigger="load" hx-target="this" hx-get="/api/v1/gemini/test" hx-swap="innerHTML"></div> -->
 </div>
-<div id="results"></div>
+
 <script src="fileupload.js"></script>
