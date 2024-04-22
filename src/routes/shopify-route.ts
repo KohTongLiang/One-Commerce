@@ -3,7 +3,6 @@ import { createAdminRestApiClient } from '@shopify/admin-api-client';
 import { shopifyApp } from '@shopify/shopify-app-express';
 import { LATEST_API_VERSION } from "@shopify/shopify-api";
 
-
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -32,16 +31,6 @@ const shopify = shopifyApp({
     },
 });
 
-// const shopify = shopifyApi({
-//     apiVersion: LATEST_API_VERSION, 
-//     billing: undefined, 
-//     isEmbeddedApp: false,
-//     apiKey: process.env.SHOPIFY_CLIENT_ID ?? "",
-//     apiSecretKey: process.env.SHOPIFY_CLIENT_SECRET ?? "",
-//     scopes: process.env.SHOPIFY_SCOPES?.split(',') ?? ['read_products'],
-//     hostName: process.env.HOSTNAME ?? ""
-// });
-
 router.get(shopify.config.auth.path, shopify.auth.begin());
 router.get(
     shopify.config.auth.callbackPath,
@@ -53,17 +42,17 @@ router.post(
     // shopify.processWebhooks({webhookHandlers}),
 );
 
-router.get('/products', (req, res, next) => {
+router.use('/*', shopify.validateAuthenticatedSession())
+router.use(shopify.cspHeaders())
+router.use('/*', shopify.ensureInstalledOnShop(), async (req, res, next) => {
+    return res.status(500).send("Shop not installed")
 })
-router.get('/getAllItems', shopify.validateAuthenticatedSession(), async (req, res, next) => {
-    const result = await client.get('products');
-    if (result.ok) {
-        const body = await result.json()
-        return res.send(body)
-    } else {
-        console.log(result)
-        return res.send(result.statusText)
-    }
-})
+
+router.get("/products/count", async (_req, res) => {
+    const countData = await shopify.api.rest.Product.count({
+        session: res.locals.shopify.session,
+    });
+    res.status(200).send(countData);
+});
 
 export default router

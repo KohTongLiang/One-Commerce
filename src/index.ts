@@ -26,13 +26,13 @@ app.use(express.static('public'))
 // Routes setup
 app.use('/views', viewRoutes)
 app.use('/api/v1/gemini', geminiRoute)
-app.use('/api/v1/shopify', shopifyRoute)
+// app.use('/api/v1/shopify', shopifyRoute)
 
 // View setup
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
 app.get('/', (req, res) => {
-  return res.sendFile( "/index.html");
+  return res.sendFile("/index.html");
 });
 
