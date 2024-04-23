@@ -6,8 +6,9 @@ div(class="flex flex-col items-center w-full")
     hr
     div(class='flex-1')
       each specObj, specType in specifications 
-        p: em= specObj 
-          div= specType
+        p: b= specType  
+        div: each v,k in specObj
+          p: em= k + ": " + v
     hr
     div(class='flex-1')
       div 

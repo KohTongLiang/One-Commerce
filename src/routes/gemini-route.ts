@@ -2,15 +2,28 @@ import express from "express";
 import sharp from "sharp";
 import fs from 'fs';
 import multer from 'multer';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { prompt, promptExamples } from "../constants";
+import {GoogleGenerativeAI} from '@google/generative-ai';
+import {prompt, promptExamples} from "../constants";
 import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables
 const router = express.Router();
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY ?? '');
-const model = genAI.getGenerativeModel({ model: process.env.GOOGLE_AI_MODEL ?? 'gemini-pro' });
-const upload = multer({ dest: 'uploads/' });
+const model = genAI.getGenerativeModel({model: process.env.GOOGLE_AI_MODEL ?? 'gemini-pro'});
+const upload = multer({dest: 'uploads/'});
+
+type GeminiResult = {
+    item_title: string;
+    description: string;
+    specifications: {
+        [key: string]: {
+            [key: string]: string;
+        };
+    };
+    use_cases: string[];
+    SEO_keywords: string[];
+};
+
 
 function fileToGenerativePart(imgBuffer: Buffer, mimeType: string) {
     return {
@@ -26,14 +39,14 @@ router.post('/image', upload.single('image'), async (req, res, next) => {
         res.status(400).send('No files were uploaded.');
         return;
     }
-    let geminiResult;
+    let geminiResult: GeminiResult;
 
     let imgBuffer = fs.readFileSync(req.file.path);
     let imgWidth, imgHeight;
 
     try {
         const metadata = await sharp(imgBuffer).metadata();
-        const { width, height } = metadata;
+        const {width, height} = metadata;
         imgWidth = width;
         imgHeight = height;
         console.log(`Image dimensions: ${width}x${height}`);
@@ -66,15 +79,23 @@ router.post('/image', upload.single('image'), async (req, res, next) => {
         }
     });
 
-    geminiResult = JSON.parse(text);
-
-    return res.render('templates/result', {
-        title: geminiResult.item_title,
-        description: geminiResult.description,
-        specifications: geminiResult.specifications,
-        use_cases: geminiResult.use_cases,
-        seo: geminiResult.SEO_keywords,
-    });
+    try {
+        geminiResult = JSON.parse(text);
+        console.log(text);
+        
+        return res.render('templates/result', {
+            title: geminiResult.item_title,
+            description: geminiResult.description,
+            specifications: geminiResult.specifications,
+            use_cases: geminiResult.use_cases,
+            seo: geminiResult.SEO_keywords,
+        });
+    } catch (error) {
+        console.log(error)
+        return res.render('templates/error', {
+            errorMessage: "Error processing results."
+        })
+    }
 });
 
 // Testing frontend

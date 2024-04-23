@@ -6,11 +6,13 @@ export const promptExamples = [
             "item_title": "Sony PlayStation 4 Slim 500GB Console with Accessories",
             "description": "Immerse yourself in the world of incredible gaming experiences with the Sony PlayStation 4 Slim 500GB console. This bundle includes everything you need to get started, featuring a sleek console, a DualShock 4 wireless controller, power cable, HDMI cable, and a USB charging cable. Enjoy stunning graphics, lightning-fast processing, and a vast library of games for endless entertainment.",
             "specifications": {
+              "PS4 Slim" : {
               "Storage Capacity": "500GB",
               "Model": "PlayStation 4 Slim",
               "Connectivity": "Wi-Fi, Bluetooth, Ethernet",
               "Included Accessories": "DualShock 4 Wireless Controller, Power Cable, HDMI Cable, USB Charging Cable",
               "Features": "HDR gaming, Remote Play, Share Play, access to streaming services"
+              }
             },
             "use_cases": [
               "Playing immersive single-player and multiplayer games",
@@ -36,6 +38,7 @@ export const promptExamples = [
             "item_title": "Red-Eared Slider Turtle - Perfect Aquatic Companion",
             "description": "Bring joy and tranquility to your home with a charming Red-Eared Slider Turtle. These captivating creatures are known for their vibrant colors, playful personalities, and ease of care, making them ideal pets for both beginners and experienced reptile enthusiasts. Create a stimulating aquatic environment and watch them thrive as they swim, bask, and explore their surroundings.",
             "specifications": {
+              "Red-eared Slider" : {
               "Scientific Name": "Trachemys scripta elegans",
               "Adult Size": "Up to 12 inches in shell length",
               "Lifespan": "20-30 years with proper care",
@@ -43,6 +46,7 @@ export const promptExamples = [
               "Habitat Requirements": "Spacious aquarium with a basking area, clean water, and proper filtration",
               "Temperature": "Water temperature between 75-80°F, basking area temperature between 85-90°F",
               "Lighting": "Full-spectrum UVB light for shell health and overall well-being"
+              }
             },
             "use_cases": [
               "Educational Pet: Observe and learn about turtle behavior, anatomy, and aquatic ecosystems.",
@@ -109,11 +113,12 @@ export const promptExamples = [
     output: `{
             "item_title": "Rilakkuma Plush Toy - Adorable and Huggable Companion",
             "description": "Bring home the irresistible charm of Rilakkuma with this delightful plush toy. Known for its relaxed demeanor and cute appearance, Rilakkuma is the perfect companion for cuddling, playtime, or adding a touch of kawaii to your space.",
-            "specifications": {
+            "specifications": { "Rilakkuma Bear" : {
               "Character": "Rilakkuma",
               "Material": "Soft plush fabric",
               "Size": "Varies (e.g., 10 inches tall)",
               "Features": "Embroidered details, signature relaxed posture"
+              }
             },
             "use_cases": [
               "Cuddly Companion: Rilakkuma's soft and huggable nature makes it the ideal snuggle buddy.",
@@ -139,4 +144,14 @@ export const promptExamples = [
 ];
 
 export const prompt =
-  'You are a store assistant. Help me come up with item title, description, specification, as well as potential use cases of how the item will be used by people for the main item in the image which i want to sell. If its not obvious, make use of the text input to reference to the item. Depending on the item, return to me useful information that user needs to know under the specification. I want the SEO keywords to help my sell my item well as well. Return to me in a valid JSON format. For use_cases its an array of string btw.';
+  'You are a store assistant. Help me come up with item title, description, specification, as well as potential use cases of how the item will be used by people for the main item in the image which i want to sell. If its not obvious, make use of the text input to reference to the item. Depending on the item, return to me useful information that user needs to know under the specification. I want the SEO keywords to help my sell my item well as well. Return to me in a valid JSON format. For the JSON output, follow the following object structure strictly {' +
+    '    item_title: string;\n' +
+    '    description: string;\n' +
+    '    specifications: {\n' +
+    '        [key: string]: {\n' +
+    '            [key: string]: string;\n' +
+    '        };\n' +
+    '    };\n' +
+    '    use_cases: string[];\n' +
+    '    SEO_keywords: string[];\n' +
+    '};\n';
