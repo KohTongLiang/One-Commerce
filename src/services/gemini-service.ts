@@ -8,16 +8,19 @@ dotenv.config(); // Load environment variables
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY ?? '');
 const model = genAI.getGenerativeModel({model: process.env.GOOGLE_AI_MODEL ?? 'gemini-pro'});
 
+type dict = { [key: string]: string }; 
+
 type GeminiResult = {
     item_title: string;
     description: string;
     specifications: {
-        [key: string]: {
-            [key: string]: string;
-        };
+        [key: string]: dict;
     };
-    use_cases: string[];
-    SEO_keywords: string[];
+    common_faqs: dict;
+    potential_use_cases: string[];
+    compatibility: dict;
+    safety_and_compliance: string;
+    seo_keywords: string[];
 };
 
 function fileToGenerativePart(imgBuffer: Buffer, mimeType: string) {

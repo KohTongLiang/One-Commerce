@@ -12,13 +12,7 @@ router.post('/image', upload.single('image'), async (req, res, next) => {
     }
     
     return await generateGeminiResult(req.file.mimetype, req.file.path).then((geminiResult) => {
-        return res.render('templates/result', {
-            title: geminiResult.item_title,
-            description: geminiResult.description,
-            specifications: geminiResult.specifications,
-            use_cases: geminiResult.use_cases,
-            seo: geminiResult.SEO_keywords,
-        });
+        return res.render('templates/result', geminiResult);
     }).catch((error) => {
         return res.render('templates/error', {
             errorMessage: "Error processing results."
