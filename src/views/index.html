@@ -10,10 +10,36 @@
     <script src="htmx-sse.js"></script>
 </head>
 
-<body class="flex flex-col h-[100vh]">
-    <div hx-trigger="load" hx-get="/views/header" hx-target="this" hx-swap="innerHTML"></div>
-    <div hx-trigger="load" hx-get="/views/formUpload" hx-target="this" hx-swap="innerHTML"></div>
-    <div hx-trigger="load" hx-get="/views/footer" hx-target="this" hx-swap="innerHTML"></div>
+<body class="flex flex-col bg-background h-[100vh]">
+    <header class="fixed bg-background top-0 w-full text-text">
+        <nav class="mx-auto flex flex-row max-w-7xl items-center justify-between p-6 lg:px-8">
+            <div class="flex-1">
+                <a href="#" class="text-3xl">One Commerce</a>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <a class="text-xl" href="https://github.com/KohTongLiang/One-Commerce" target="_blank">About</a>
+            </div>
+        </nav>
+        <hr />
+    </header>
+
+
+    <div class="flex flex-row grow mt-[25vh] align-middle mx-[5%] xl:mx-[10%] items-center">
+        <div class="flex-1 m-5">
+            <p class="py-3 text-3xl text-text">One Image Onboarding</p>
+            <p class="py-3 text-xl text-text">Streamline your e-commerce listing process with our innovative app.
+                One-Commerce leverages gemini to generate compelling product descriptions from a simple image.</p>
+            <button class="bg-text text-primary px-2 py-2 rounded-md border-r-4" hx-get="/views/formUpload"
+                hx-target="#formUploadContainer" hx-swap="innerHTML">Explore</button>
+        </div>
+        <div class="flex-1 m-5">
+            <img class="w-100" src="hero-image.webp" atl="image" />
+        </div>
+    </div>
+
+    <div class="flex-grow mb-6 md:mx-[25%] h-[100vh] my-[5%] ">
+        <div id="formUploadContainer" />
+    </div>
 </body>
 
 </html>
