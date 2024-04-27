@@ -1,6 +1,15 @@
 <div class="border-gray-200 border-4 rounded">
     <form id="form" hx-encoding="multipart/form-data" hx-post="/api/v1/gemini/image" hx-target="#results"
-        hx-swap="innerHTML">
+        hx-swap="innerHTML show:#results:top swap:0.15s" hx-indicator="#spinner">
+        <div class="form-div">
+            <div class="flex-1">
+                <ol>
+                    <li>Upload an image (less than 1mb).</li>
+                    <li>Click upload.</li>
+                    <li>View the generated result.</li>
+                </ol>
+            </div>
+        </div>
         <div class="form-div">
             <div class="flex-1">
                 <input id="imageInput" type="file" name="image" />
@@ -22,7 +31,14 @@
         </div>
         <div class="form-div ">
             <div class="flex-1">
-                <img id="preview" alt="Uploaded Preview" class="inline-block w-[50%]" />
+                <img id="preview" src="preview.webp" alt="Uploaded Preview" class="inline-block w-[50%]" />
+            </div>
+        </div>
+        <div class="form-div ">
+            <div class="flex-1">
+                <div id="spinner" class="htmx-indicator">
+                    <img src="icons8-spinner.gif" class="inline-block w-[10%]" />
+                </div>
             </div>
         </div>
     </form>

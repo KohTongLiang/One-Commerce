@@ -8,11 +8,11 @@ The application provides a platform for user to upload an image of a product the
 
 ### Features
 
-* Upload image to get your descriptions
+- Upload image to get your descriptions
 
 ### Unfinished Feature
 
-* Shopify integration - automatically list your product once you are happy with the descriptions generated.
+- Shopify integration - automatically list your product once you are happy with the descriptions generated.
 
 ## To run the Project
 
@@ -47,3 +47,7 @@ npm run build
 
 npm run start
 ```
+
+# References
+
+- [Loading Spinner](https://icons8.com/icons/set/spinner)
