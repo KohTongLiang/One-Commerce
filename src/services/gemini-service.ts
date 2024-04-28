@@ -14,7 +14,7 @@ type GeminiResult = {
     item_title: string;
     description: string;
     specifications: {
-        [key: string]: dict;
+        [key: string]: { [key: string]: string };
     };
     common_faqs: dict;
     potential_use_cases: string[];
