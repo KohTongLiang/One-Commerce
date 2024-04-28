@@ -2,9 +2,7 @@
 
 Streamline your e-commerce listing process with our innovative app. One-Commerce leverages gemini to generate compelling product descriptions from a simple image.
 
-## Description
-
-The application provides a platform for user to upload an image of a product they wish to list on a e-commerce store, by generating relevant product information. Integration with existing e-commerce platforms to allow direct uploading of product is being explored to streamline the process to add products to e-commerce store directly.
+## Features
 
 ### Features
 
@@ -21,7 +19,7 @@ The application provides a platform for user to upload an image of a product the
 Setup environmental file with the following
 
 ```text
-PORT=<port where the app will listen on>
+PORT=<port where the app will listen on>s
 GOOGLE_AI_API_KEY=<API key from Google>
 GOOGLE_AI_MODEL=<gemini-pro or gemini-pro-vision>
 ```
@@ -45,7 +43,7 @@ npm run build-css
 
 npm run build
 
-npm run start
+node dist/index.js
 ```
 
 # References
