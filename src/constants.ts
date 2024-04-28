@@ -47,7 +47,7 @@ export const promptExamples = [
     "Console Bundle"
   ]
   }`
-},
+  },
   {
     image: 'boots.jpg',
     mime: 'image/jpeg',
@@ -188,17 +188,6 @@ export const promptExamples = [
   },
 ];
 
+
 export const prompt =
-  'You are a store assistant. Help me come up with the following data pertaining to the item: item title, description, specification, common FAQs, potential use cases of how the item will be used, compatibility (if relevant), safety and compliance. If its not obvious, make use of the text input to reference to the item. Depending on the item, return to me useful information that user needs to know under the specifications. I want the SEO keywords to help my sell my item well as well. Return to me in a valid JSON format. Follow the exact structure as the given example. Ensure output json adheres to type dict = { [key: string]: string } \n' +
-    'type GeminiResult = {\n' +
-    '    item_title: string;\n' +
-    '    description: string;\n' +
-    '    specifications: {\n' +
-    '        [key: string]: dict;\n' +
-    '    };\n' +
-    '    common_faqs: dict;\n' +
-    '    potential_use_cases: string[];\n' +
-    '    compatibility: dict;\n' +
-    '    safety_and_compliance: string;\n' +
-    '    seo_keywords: string[];\n' +
-    '}. Give me only a parsable json without the ```json ```';
+  'You are a store assistant. Please provide the following details about the item:  Item Title: [Provide the title of the item]  Description: [Describe the tem briefly]  Specifications: [List the technical specifications of the item]For ach specification category, provide the following information:  Category Name: Specify the name of the category, e.g., \'Dimensions\', \'Material\']  Details: Provide the details of the category in a key-value format, where the keys epresent specific attributes and the values provide corresponding details]Ensure hat the specifications are organized as follows: "specifications": {"Category  Name": {  "Attribute 1": "Value 1",  "Attribute 2": "Value 2",  ...},"Category 2 Name": {  "Attribute 1": "Value 1",  "Attribute 2": "Value 2",  ...},...},  Common FAQs: [Provide common questions and answers about the tem]  Potential Use Cases: [List potential use cases or scenarios where the item an be used]  Compatibility: [Specify compatibility information if relevant]  afety and Compliance: [Describe any safety and compliance details]  SEO eywords: Provide keywords to help with SEO and marketing]Please return the information in  valid JSON format following the exact structure as provided in the example. nsure that the output adheres to the GeminiResult type defined as follows:typescripttype GeminiResult = {item_title: string;description: string;specifications: {  [category: string]: {    [attribute: string]: string;  };};common_faqs: { [question: string]: string };potential_use_cases: string[];compatibility: { [item: string]: string };safety_and_compliance: string;seo_keywords: string[];};Provide only a parsable JSON without the enclosing json tag.'

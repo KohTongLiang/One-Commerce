@@ -1,14 +1,14 @@
 import dotenv from "dotenv";
-import {GoogleGenerativeAI} from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
 import sharp from "sharp";
-import {prompt, promptExamples} from "../constants";
+import { prompt, promptExamples } from "../constants";
 
 dotenv.config(); // Load environment variables
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY ?? '');
-const model = genAI.getGenerativeModel({model: process.env.GOOGLE_AI_MODEL ?? 'gemini-pro'});
+const model = genAI.getGenerativeModel({ model: process.env.GOOGLE_AI_MODEL ?? 'gemini-pro' });
 
-type dict = { [key: string]: string }; 
+type dict = { [key: string]: string };
 
 type GeminiResult = {
     item_title: string;
@@ -33,14 +33,14 @@ function fileToGenerativePart(imgBuffer: Buffer, mimeType: string) {
 }
 
 export async function generateGeminiResult(mimeType: string, filePath: string): Promise<GeminiResult> {
-    return new Promise<GeminiResult> (async (resolve, reject) => {
+    return new Promise<GeminiResult>(async (resolve, reject) => {
         let geminiResult: GeminiResult;
         let imgBuffer = fs.readFileSync(filePath);
         let imgWidth, imgHeight;
 
         try {
             const metadata = await sharp(imgBuffer).metadata();
-            const {width, height} = metadata;
+            const { width, height } = metadata;
             imgWidth = width;
             imgHeight = height;
             console.log(`Image dimensions: ${width}x${height}`);
@@ -53,7 +53,7 @@ export async function generateGeminiResult(mimeType: string, filePath: string): 
         let finalPrompt = [];
         promptExamples.forEach((example) => {
             finalPrompt.push(
-                'Example: ',
+                'Examples: ',
                 fileToGenerativePart(fs.readFileSync(`promptexamples/${example.image}`), example.mime),
                 'Output: ',
                 example.output,
@@ -72,12 +72,12 @@ export async function generateGeminiResult(mimeType: string, filePath: string): 
             }
         });
 
+        console.log(text);
+
         try {
             geminiResult = JSON.parse(text);
-            console.log(text);
             resolve(geminiResult);
         } catch (error) {
-            console.log(error)
             reject(error);
         }
     })
