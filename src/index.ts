@@ -4,8 +4,9 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import viewRoutes from './routes/view-routes';
 import geminiRoute from "./routes/gemini-route";
-import shopifyRoute from "./routes/shopify-route";
+// import shopifyRoute from "./routes/shopify-route";
 import path = require('path');
+import logger from './services/logger';
 
 dotenv.config(); // Load environment variables
 
@@ -13,7 +14,7 @@ const port: string = process.env.PORT ?? '3000';
 const app = express();
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  logger.info(`Server is running on port ${port}`)
 });
 
 app.use(cors());

@@ -3,6 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
 import sharp from "sharp";
 import { prompt, promptExamples } from "../constants";
+import logger from "./logger";
 
 dotenv.config(); // Load environment variables
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY ?? '');
@@ -43,9 +44,9 @@ export async function generateGeminiResult(mimeType: string, filePath: string): 
             const { width, height } = metadata;
             imgWidth = width;
             imgHeight = height;
-            console.log(`Image dimensions: ${width}x${height}`);
+            logger.info(`Image dimensions: ${width}x${height}`);
         } catch (error) {
-            console.error(error);
+            logger.error(error);
             reject(new Error("Error processing image."));
         }
 
@@ -68,16 +69,17 @@ export async function generateGeminiResult(mimeType: string, filePath: string): 
 
         fs.unlink(filePath, (err) => {
             if (err) {
-                console.error(err);
+                logger.error(err)
             }
         });
 
-        console.log(text);
+        logger.info(`Gemini AI Response: ${text}`);
 
         try {
             geminiResult = JSON.parse(text);
             resolve(geminiResult);
         } catch (error) {
+            logger.error(error);
             reject(error);
         }
     })
