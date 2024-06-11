@@ -4,8 +4,6 @@ htmx.on('#imageInput', 'change', async function (evt) {
 
 async function handleImageUpload(event) {
   const imageFile = event.target.files[0];
-  console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
-  console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
 
   const options = {
     maxSizeMB: 1,
