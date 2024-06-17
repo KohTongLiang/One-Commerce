@@ -10,6 +10,8 @@ router.post('/image', upload.single('image'), async (req, res, next) => {
         res.status(400).send('No files were uploaded.');
         return;
     }
+
+    console.log(req.file.size);
     
     return await generateGeminiResult(req.file.mimetype, req.file.path).then((geminiResult) => {
         return res.render('templates/result', geminiResult);
