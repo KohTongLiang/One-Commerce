@@ -1,5 +1,15 @@
 htmx.on('#imageInput', 'change', async function (evt) {
-  await handleImageUpload(evt);
+  const imageFile = evt.target.files[0];
+  if (
+    imageFile.type !== 'image/webp' &&
+    imageFile.type !== 'image/jpeg' &&
+    imageFile.type !== 'image/jpg' &&
+    imageFile.type !== 'image/png'
+  ) {
+    alert('Only jpeg, webp, or png files are allowed');
+  } else {
+    await handleImageUpload(evt);
+  }
 });
 
 async function handleImageUpload(event) {
