@@ -11,39 +11,45 @@
     <script src="browser-image-compression.js"></script>
 </head>
 
-<body class="flex flex-col bg-background ">
+<body class="flex flex-col ">
     <header class="fixed bg-background top-0 w-full text-text">
         <nav class="mx-auto flex flex-row max-w-7xl items-center justify-between p-6 lg:px-8">
             <div class="flex-1">
                 <a href="#" class="text-xl md:text-3xl">One Commerce</a>
                 <p>Alpha</p>
             </div>
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 mg:gap-4 gap-1">
                 <a class="md:text-xl" href="https://forms.gle/AFm2GJu8fqhE9Cr18" target="_blank">Feedback</a>
             </div>
         </nav>
         <hr />
     </header>
 
-
-    <div class="flex flex-col md:flex-row grow  align-middle mx-[5%] xl:mx-[10%] items-center h-[100vh]">
-        <div class="flex-1 mt-[30%] md:m-5">
-            <p class="py-3 text-xl md:text-3xl text-text">One-Shot Listing Generation</p>
-            <p class="py-3 md:text-xl text-text-normal">Streamline your e-commerce listing process with our innovative
-                app.
-                One-Commerce leverages gemini to generate compelling product descriptions, specifications, and even SEO
-                keywords from a single image.</p>
-            <button class="bg-text text-primary px-2 py-2 rounded-md" hx-get="/views/formUpload"
-                hx-target="#formUploadContainer"
-                hx-swap="innerHTML show:#formUploadContainer:bottom swap:0.15s">Explore</button>
+    <div class="bg-background">
+        <div class="flex flex-col md:flex-row grow align-middle items-center mx-[5%] xl:mx-[10%] h-[100vh]">
+            <div class="flex-1 mt-[30%] md:m-5">
+                <p class="py-3 text-xl md:text-4xl text-text">
+                    Generating Product Description with a Single Input
+                </p>
+                <p class="py-3 md:text-xl text-text-normal">Streamline your e-commerce listing process with our innovative
+                    app.
+                    One-Commerce leverages gemini to generate compelling product descriptions, specifications, and even SEO
+                    keywords from a single image.</p>
+                <button
+                  class="bg-text text-white px-2 py-2 rounded-md"
+                  hx-get="/views/formUpload"
+                  hx-target="#formUploadContainer"
+                  hx-swap="innerHTML show:#formUploadContainer:bottom swap:0.15s">
+                    Start Generating
+                </button>
+            </div>
+            <div class="flex-1 m-5">
+                <img class="w-100" src="hero-image.webp" alt="image" />
+            </div>
         </div>
-        <div class="flex-1 m-5">
-            <img class="w-100" src="hero-image.webp" atl="image" />
+        <div class="">
+            <div id="formUploadContainer"></div>
         </div>
-    </div>
-
-    <div class="flex-grow mb-6 md:mx-[25%] my-[5%] ">
-        <div id="formUploadContainer" />
     </div>
 </body>
 

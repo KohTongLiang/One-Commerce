@@ -1,6 +1,6 @@
-<div class="border-gray-200 border-4 rounded m-2">
+<div class="pt-[25%] min-h-[100vh]">
     <form id="form" hx-encoding="multipart/form-data" hx-post="/api/v1/gemini/image" hx-target="#results"
-        hx-swap="innerHTML show:#results:top swap:0.15s" hx-indicator="#spinner">
+          hx-swap="innerHTML show:#results:top swap:0.15s" hx-indicator="#spinner">
         <div class="form-div">
             <div class="flex-1">
                 <ol>
@@ -17,8 +17,8 @@
         <div class="form-div">
             <div class="flex-1">
                 <button
-                    class="bg-indigo-600 text-white py-1 px-2 rounded-md transition-colors hover:bg-blue-100 shadow-md"
-                    type="submit">
+                  class="bg-text text-white py-1 px-2 rounded-md transition-colors hover:bg-blue-100 shadow-md"
+                  type="submit">
                     Upload
                 </button>
             </div>
@@ -35,9 +35,8 @@
                 </div>
             </div>
         </div>
+        <div id="results"></div>
     </form>
-    <div id="results"></div>
-    <!-- <div id="results" hx-trigger="load" hx-target="this" hx-get="/api/v1/gemini/test" hx-swap="innerHTML"></div> -->
 </div>
 
 <script src="fileupload.js"></script>
