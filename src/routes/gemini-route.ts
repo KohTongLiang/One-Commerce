@@ -1,11 +1,12 @@
 import express from 'express';
 import multer from 'multer';
+
 import { generateGeminiResult } from '../services/gemini-service';
 
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
 
-router.post('/image', upload.single('image'), async (req, res, next) => {
+router.post('/image', upload.single('image'), async (req, res) => {
   if (!req.file) {
     res.status(400).send('No files were uploaded.');
     return;

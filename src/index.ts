@@ -1,10 +1,11 @@
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
+
+import geminiRoute from './routes/gemini-route';
 import viewRoutes from './routes/view-routes';
-import geminiRoute from "./routes/gemini-route";
-// import shopifyRoute from "./routes/shopify-route";
+
 import path = require('path');
 import logger from './services/logger';
 
@@ -22,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'views')));
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 // Routes setup
 app.use('/views', viewRoutes)
@@ -34,6 +35,5 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
 app.get('/', (req, res) => {
-  return res.sendFile("/index.html");
+  return res.sendFile('/index.html');
 });
-
