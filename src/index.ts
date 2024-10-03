@@ -26,14 +26,18 @@ app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static('public'));
 
 // Routes setup
-app.use('/views', viewRoutes)
-app.use('/api/v1/gemini', geminiRoute)
-// app.use('/api/v1/shopify', shopifyRoute)
+app.use('/views', viewRoutes);
+app.use('/api/v1/gemini', geminiRoute);
 
 // View setup
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
+// URL Re-write
 app.get('/', (req, res) => {
   return res.sendFile('/index.html');
+});
+
+app.get('/one-commerce', (req, res) => {
+  res.redirect('/');
 });
