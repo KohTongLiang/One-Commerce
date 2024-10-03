@@ -37,7 +37,3 @@ app.set('views', path.join(__dirname, '..', 'src', 'views'));
 app.get('/', (req, res) => {
   return res.sendFile('/index.html');
 });
-
-app.get('/one-commerce', (req, res) => {
-  res.redirect('/');
-});
